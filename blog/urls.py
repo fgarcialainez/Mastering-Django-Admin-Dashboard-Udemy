@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+# Customize hearder, title and index title
 admin.site.site_header = 'Super Blog Admin'
 admin.site.site_title = 'Super Blog Admin'
 admin.site.index_title = 'Super Blog Administration'
