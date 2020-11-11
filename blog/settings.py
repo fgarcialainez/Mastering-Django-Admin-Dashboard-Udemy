@@ -32,19 +32,45 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Main App
+    'main.apps.MainConfig',
+
     # Summernote rich text editor
     # https://github.com/summernote/django-summernote
     'django_summernote',
 
-    # Main App
-    'main.apps.MainConfig'
+    # Filter drop-down list
+    # https://github.com/mrts/django-admin-list-filter-dropdown
+    'django_admin_listfilter_dropdown',
+
+    # Custom range filter
+    # https://github.com/silentsokolov/django-admin-rangefilter
+    'rangefilter',
+
+    # Maps integration (not implemented because of GDAL library dependency)
+    # https://github.com/makinacorpus/django-leaflet
+    # 'leaflet',
+
+    # Maps integration (fields)
+    # https://github.com/makinacorpus/django-geojson
+    # 'djgeojson'
+
+    # Import / Export
+    # https://github.com/django-import-export/django-import-export
+    'import_export',
+
+    # Custom skin (add before the default django.contrib.admin)
+    # https://github.com/sehmaschine/django-grappelli
+    'grappelli',
+
+    # Default django.contrib.admin (see grappelli)
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [

@@ -1,7 +1,12 @@
-from django_summernote.admin import SummernoteModelAdmin
 from django.db.models import Count
 from django.contrib import admin
 from main.models import Blog, Comment, Category
+from django_summernote.admin import SummernoteModelAdmin
+from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
+from rangefilter.filter import DateTimeRangeFilter
+from import_export.admin import ImportExportModelAdmin
+
+from main.resources import CommentResource
 
 
 class CommentInline(admin.TabularInline):
@@ -21,7 +26,9 @@ class BlogAdmin(SummernoteModelAdmin):
     # Configure blogs list view filters and actions
     list_display = ('title', 'date_created', 'last_modified', 'is_draft', 'days_since_creation',
                     'number_of_comments')
-    list_filter = ('is_draft', 'date_created',)
+    list_filter = (
+        'is_draft',
+        ('date_created', DateTimeRangeFilter))
     search_fields = ('title',)
     prepopulated_fields = {'slug': ('title',)}
     list_per_page = 10
@@ -75,11 +82,17 @@ class BlogAdmin(SummernoteModelAdmin):
     number_of_comments.admin_order_field = "comments_count"
 
 
-class CommentAdmin(admin.ModelAdmin):
+class CommentAdmin(ImportExportModelAdmin):
     """Create a custom admin class for the Comment model"""
     list_display = ('blog', 'text', 'date_created', 'is_active')
     list_editable = ('is_active',)
     list_per_page = 20
+
+    list_filter = (
+        # Related fields
+        ('blog', RelatedDropdownFilter),
+    )
+    resource_class = CommentResource
 
 
 # Register your models here.

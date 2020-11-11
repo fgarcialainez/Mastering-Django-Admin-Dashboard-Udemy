@@ -26,6 +26,7 @@ admin.site.index_title = 'Super Blog Administration'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
+    path('grappelli/', include('grappelli.urls'))
 ]
 
 # Summernote rich text editor configuration
