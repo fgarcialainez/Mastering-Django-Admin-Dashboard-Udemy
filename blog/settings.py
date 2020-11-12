@@ -71,6 +71,10 @@ INSTALLED_APPS = [
 
     # Default django.contrib.admin (see grappelli)
     'django.contrib.admin',
+
+    # Securing the admin
+    # https://github.com/dmpayton/django-admin-honeypot
+    'admin_honeypot'
 ]
 
 MIDDLEWARE = [

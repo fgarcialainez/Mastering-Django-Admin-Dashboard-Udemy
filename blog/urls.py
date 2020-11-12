@@ -24,9 +24,13 @@ admin.site.site_title = 'Super Blog Admin'
 admin.site.index_title = 'Super Blog Administration'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('grappelli/', include('grappelli.urls'))
+    path('grappelli/', include('grappelli.urls')),
+
+    # Honeypot URLs (securing the admin)
+    # path('admin/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('secret/', admin.site.urls),
 ]
 
 # Summernote rich text editor configuration

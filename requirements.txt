@@ -7,3 +7,4 @@ django-admin-rangefilter==0.6.3
 # django-geojson==3.1.0
 django-import-export==2.4.0
 django-grappelli==2.14.2
+django-admin-honeypot==1.1.0
